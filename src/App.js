@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Account from "./routes/Account";
 import Home from "./routes/Home"
 import Signin from "./routes/Signin";
 import Signup from "./routes/Signup";
 import Coinspage from "./routes/Coinspage";
 import axios from 'axios'
 import Footer from "./components/Footer";
-import HashLoader  from "react-spinners/HashLoader";
-import { AuthContextProvider } from "./context/AuthContext";
+import ClockLoader  from "react-spinners/ClockLoader";
+
 
 
 function App() {
@@ -39,9 +38,9 @@ useEffect (() => {
      
   
       {                   
-        loading ?  <div className="absolute top-[40vh] left-[35%] md:left-[45%]  "> <HashLoader  
+        loading ?  <div className="absolute top-[40vh] left-[35%] md:left-[45%]  "> <ClockLoader
+         color="#36d7b7"   
         className=""
-        color={"#36d7b7"}
         loading={loading}
         size={150} 
         
@@ -50,17 +49,17 @@ useEffect (() => {
     :
 
     <div>
-    <AuthContextProvider >
+
      <Navbar />
      <Routes >
       <Route path="/"  element={<Home coins={coins} />}/>
       <Route path="/signin"  element={<Signin />}/>
       <Route path="/signup"  element={<Signup />}/>
-      <Route path="/account" element={<Account />}/>
+ 
       <Route path="/coin/:coinId" element={<Coinspage />} />
       </Routes>
       <Footer />
-    </AuthContextProvider>
+   
       </div> }
  
 
